@@ -34,12 +34,6 @@ class DFNLPSession(val sessionId: SessionName, sessionClient: SessionsClient, ct
       val fulfillmentText = extractFulfillmentText(response)
       val payloads = extractPayload(response)
 
-      println("got response from dialogflow = ", response)
-      println("got parameters from dialogflow = ", response.getQueryResult.getParameters)
-      println("got contexts from dialogflow = ", contextList)
-      println("got fulfillment from dialogflow = ", fulfillmentText)
-      println("got payloads from dialogflow = ", payloads)
-
       NLPResponse(
         action,
         intent,

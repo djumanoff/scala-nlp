@@ -1,7 +1,9 @@
 name := "scala-nlp"
 
-version := "0.1"
+organization := "com.github.djumanoff"
 
-scalaVersion := "2.12.6"
+version := "0.0.1"
+
+scalaVersion := "2.11.7"
 
 libraryDependencies += "com.google.cloud" % "google-cloud-dialogflow" % "0.55.1-alpha"
