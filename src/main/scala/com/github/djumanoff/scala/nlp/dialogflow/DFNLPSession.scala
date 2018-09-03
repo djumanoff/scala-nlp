@@ -98,6 +98,10 @@ class DFNLPSession(val sessionId: SessionName, sessionClient: SessionsClient, ct
     (for { ctx <- ctxClient.listContexts(sessionId).iterateAll().asScala } yield ctx.getName.split("/").last).toList
   }
 
+  override def getSessionId: String = {
+    sessionId.getSession
+  }
+
   private def extractAction(response: DetectIntentResponse): String = {
     response.getQueryResult.getAction
   }
