@@ -6,4 +6,4 @@ package com.github.djumanoff.scala.nlp
   * @param text message itself
   * @param lang language in which message was written
   */
-case class HumanMessage(text: String, lang: String)
+case class HumanMessage(text: String, lang: String, sessionId: Option[String] = None)

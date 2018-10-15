@@ -33,12 +33,6 @@ class DFNLPSession(val sessionId: SessionName, sessionClient: SessionsClient, ct
       val fulfillmentText = extractFulfillmentText(response)
       val payloads = extractPayload(response)
 
-      println(s"got response from dialogflow = $response")
-      println(s"got parameters from dialogflow = ${response.getQueryResult.getParameters}")
-      println(s"got contexts from dialogflow = $contextList}")
-      println(s"got fulfillment from dialogflow = $fulfillmentText")
-      println(s"got payloads from dialogflow = $payloads")
-
       NLPResponse(
         action,
         intent,
@@ -101,6 +95,10 @@ class DFNLPSession(val sessionId: SessionName, sessionClient: SessionsClient, ct
 
   override def listContexts(): List[String] = {
     (for { ctx <- ctxClient.listContexts(sessionId).iterateAll().asScala } yield ctx.getName.split("/").last).toList
+  }
+
+  override def getSessionId: String = {
+    sessionId.getSession
   }
 
   private def extractAction(response: DetectIntentResponse): String = {

@@ -42,4 +42,10 @@ trait NLPSession {
     * @return list of strings representing current contexts
     */
   def listContexts(): List[String]
+
+  /**
+    * Get string representation of session id
+    * @return session id
+    */
+  def getSessionId: String
 }
