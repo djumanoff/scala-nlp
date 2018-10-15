@@ -5,10 +5,12 @@ import com.github.djumanoff.scala.nlp.{NLPAgent, NLPSession}
 import java.util.UUID.randomUUID
 
 object DFNLPAgent {
+
   def apply(projectId: String, sessClient: SessionsClient, ctxClient: ContextsClient): DFNLPAgent = new DFNLPAgent(projectId, sessClient, ctxClient)
 }
 
 class DFNLPAgent(projectId: String, sessClient: SessionsClient, ctxClient: ContextsClient) extends NLPAgent {
+
   override def createSession(sessionId: Option[String] = None): NLPSession = {
     try {
       val sessionName = SessionName.of(projectId, sessionId.getOrElse(generateSessionId())) // TODO: generate unique session id

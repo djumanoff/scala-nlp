@@ -8,6 +8,7 @@ object DFNLPProvider {
 }
 
 class DFNLPProvider(projectId: String) extends NLPProvider {
+
   override def createAgent(): NLPAgent = {
     try {
       validateGoogleCredentials()

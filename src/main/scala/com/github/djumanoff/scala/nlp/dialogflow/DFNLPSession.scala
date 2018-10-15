@@ -6,16 +6,15 @@ import com.github.djumanoff.scala.nlp.{HumanMessage, NLPResponse, NLPSession}
 
 import scala.collection.JavaConverters._
 
-
 /**
   * Created by idris on 7/31/18.
   */
-
 object DFNLPSession {
   def apply(sessionId: SessionName, sessionClient: SessionsClient, ctxClient: ContextsClient): DFNLPSession = new DFNLPSession(sessionId, sessionClient, ctxClient)
 }
 
 class DFNLPSession(val sessionId: SessionName, sessionClient: SessionsClient, ctxClient: ContextsClient) extends NLPSession {
+
   override def processHumanMessage(msg: HumanMessage): NLPResponse = {
     try {
       val txtInput = TextInput.newBuilder()
@@ -34,11 +33,11 @@ class DFNLPSession(val sessionId: SessionName, sessionClient: SessionsClient, ct
       val fulfillmentText = extractFulfillmentText(response)
       val payloads = extractPayload(response)
 
-      println("got response from dialogflow = ", response)
-      println("got parameters from dialogflow = ", response.getQueryResult.getParameters)
-      println("got contexts from dialogflow = ", contextList)
-      println("got fulfillment from dialogflow = ", fulfillmentText)
-      println("got payloads from dialogflow = ", payloads)
+      println(s"got response from dialogflow = $response")
+      println(s"got parameters from dialogflow = ${response.getQueryResult.getParameters}")
+      println(s"got contexts from dialogflow = $contextList}")
+      println(s"got fulfillment from dialogflow = $fulfillmentText")
+      println(s"got payloads from dialogflow = $payloads")
 
       NLPResponse(
         action,
