@@ -6,16 +6,15 @@ import com.github.djumanoff.scala.nlp.{HumanMessage, NLPResponse, NLPSession}
 
 import scala.collection.JavaConverters._
 
-
 /**
   * Created by idris on 7/31/18.
   */
-
 object DFNLPSession {
   def apply(sessionId: SessionName, sessionClient: SessionsClient, ctxClient: ContextsClient): DFNLPSession = new DFNLPSession(sessionId, sessionClient, ctxClient)
 }
 
 class DFNLPSession(val sessionId: SessionName, sessionClient: SessionsClient, ctxClient: ContextsClient) extends NLPSession {
+
   override def processHumanMessage(msg: HumanMessage): NLPResponse = {
     try {
       val txtInput = TextInput.newBuilder()
